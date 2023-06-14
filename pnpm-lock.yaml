@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource/iosevka-etoile':
+    specifier: ^5.0.3
+    version: 5.0.3
   '@prisma/client':
     specifier: 4.15.0
     version: 4.15.0(prisma@4.15.0)
@@ -339,6 +342,10 @@ packages:
     resolution: {integrity: sha512-6SWlXpWU5AvId8Ac7zjzmIOqMOba/JWY8XZ4A7q7Gn1Vlfg/SFFIlrtHXt9nPn4op9ZPAkl91Jao+QQv3r/ukw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/iosevka-etoile@5.0.3:
+    resolution: {integrity: sha512-CatxxWnlxrUsLit9HV8w5b23JrYzYtH/GiLMGlHyCG6TbtL+o8Q6Cq0hxzNKkmPip6zx57q/tZjWU1BnaPwFHA==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
