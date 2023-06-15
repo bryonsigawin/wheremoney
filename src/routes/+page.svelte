@@ -1,15 +1,12 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	import AddTransaction from '$lib/components/add-transaction.svelte';
 
+	export let data: PageData;
 	console.log(data);
 </script>
 
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
-
-<style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.gray.600);
-	}
-</style>
+<div class="flex h-screen w-screen items-center justify-center">
+	<AddTransaction />
+</div>

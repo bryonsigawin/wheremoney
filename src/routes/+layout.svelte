@@ -22,3 +22,12 @@
 </script>
 
 <slot />
+
+<style lang="postcss">
+	:global(html) {
+		@apply font-serif;
+		/* background: linear-gradient(theme(colors.white), theme(colors.teal.50)); */
+		/* background-color: theme(colors.teal.50); */
+		background-color: #e8e1d4;
+	}
+</style>
