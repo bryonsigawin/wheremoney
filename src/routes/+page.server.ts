@@ -15,15 +15,13 @@ export const load = (async ({ cookies }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({ request, cookies }) => {
+	add: async ({ request, cookies }) => {
 		const data = await request.formData();
 
 		const amount = data.get('amount');
 		const name = data.get('name');
 		const description = data.get('description');
 		const userId = cookies.get('userId');
-
-		console.log('asd');
 
 		if (!amount || !name || !description || !userId) throw new Error('Fields are missing!');
 

@@ -10,19 +10,33 @@
 		<div class="">
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
 				<label class="block text-xs font-semibold" for="amount">amount</label>
-				<input id="amount" name="amount" class="font-bold outline-none bg-transparent" />
+				<input
+					type="number"
+					id="amount"
+					name="amount"
+					class="w-full font-bold outline-none bg-transparent"
+				/>
 			</div>
 		</div>
 		<div class="">
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
 				<label class="block text-xs font-semibold" for="amount">name</label>
-				<input id="name" name="name" class="font-bold outline-none bg-transparent" />
+				<input
+					type="text"
+					id="name"
+					name="name"
+					class="w-full font-bold outline-none bg-transparent"
+				/>
 			</div>
 		</div>
 		<div class="">
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
 				<label class="block text-xs font-semibold" for="amount">description</label>
-				<input id="description" name="description" class="font-bold outline-none bg-transparent" />
+				<input
+					id="description"
+					name="description"
+					class="w-full font-bold outline-none bg-transparent"
+				/>
 			</div>
 		</div>
 
@@ -31,3 +45,18 @@
 		</div>
 	</div>
 </Window>
+
+<style>
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type='number'] {
+		-moz-appearance: textfield;
+		appearance: textfield;
+	}
+</style>

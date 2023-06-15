@@ -8,8 +8,8 @@
 	console.log(data);
 </script>
 
-<div class="flex h-screen w-screen items-center justify-center flex-col gap-6">
-	<form method="POST">
+<div class="grid min-h-screen w-screen place-content-center gap-6 pt-10">
+	<form method="POST" action="?/add">
 		<AddTransaction />
 	</form>
 	<Transactions transactions={data.user?.transactions} />
