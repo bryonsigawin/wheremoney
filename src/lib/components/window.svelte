@@ -1,4 +1,4 @@
-<div class="border-2 border-solid border-black shadowed w-full max-w-xl mx-6">
+<div class="border-2 border-solid border-black shadowed w-full max-w-3xl mx-6">
 	<div class="border-[3px] border-solid border-white border-r-gray-400 border-b-gray-400">
 		<div class="p-8 border-t-4 border-solid border-black">
 			<slot />

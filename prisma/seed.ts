@@ -2,27 +2,32 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const seedData = [
-	{
-		id: 'cliueff3f0000uw6otkz3vmqa',
-		name: 'George',
-		username: 'admin',
-		password: 'admin'
-	}
-];
-
 async function main() {
 	console.log('Seeding DB...');
 
-	for (const p of seedData) {
-		const user = await prisma.user.create({
-			data: p
-		});
+	await prisma.user.create({
+		data: {
+			id: 'clix00e3l0000uwe015urpnp1',
+			createdAt: new Date(),
+			updatedAt: new Date(),
+			username: 'admin',
+			password: 'admin',
+			name: 'admin'
+		}
+	});
 
-		console.log(
-			`created user ${user.id}(${user.name}) with creds ${user.username} / ${user.password}`
-		);
-	}
+	await prisma.transaction.create({
+		data: {
+			id: 1,
+			createdAt: new Date(),
+			updatedAt: new Date(),
+			name: 'Example',
+			description: 'example transaction',
+			amount: 20,
+			date: new Date(),
+			userId: 'clix00e3l0000uwe015urpnp1'
+		}
+	});
 }
 
 main()
