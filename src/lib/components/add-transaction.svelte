@@ -39,6 +39,17 @@
 				/>
 			</div>
 		</div>
+		<div class="">
+			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
+				<label class="block text-xs font-semibold" for="amount">When</label>
+				<input
+					type="date"
+					id="date"
+					name="date"
+					class="w-full font-bold outline-none bg-transparent"
+				/>
+			</div>
+		</div>
 
 		<div class="">
 			<Button type="submit">Add</Button>
