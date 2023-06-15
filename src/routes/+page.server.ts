@@ -1,47 +1,31 @@
 import prisma from '$lib/prisma';
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ cookies }) => {
-	const user = await prisma.user.findFirst({
-		select: {
-			id: true,
-			transactions: true
-		}
-	});
+	const userId = cookies.get('userId');
 
-	if (user?.id) cookies.set('userId', user.id);
-
-	return { user };
+	if (userId) throw redirect(301, '/dashboard');
 }) satisfies PageServerLoad;
 
 export const actions = {
-	add: async ({ request, cookies }) => {
+	default: async ({ request, cookies }) => {
 		const data = await request.formData();
+		const username = data.get('username')?.toString();
 
-		const amount = data.get('amount');
-		const name = data.get('name');
-		const description = data.get('description');
-		const date = data.get('date');
-		const userId = cookies.get('userId');
+		if (!username) throw new Error('Username is missing!');
 
-		if (!amount || !name || !description || !userId || !date) {
-			throw new Error('Fields are missing!');
-		}
-
-		const inputDate = new Date(`${date}`);
-
-		const actualDate = new Date();
-		actualDate.setDate(inputDate.getDate());
-		actualDate.setMonth(inputDate.getMonth());
-
-		await prisma.transaction.create({
-			data: {
-				amount: parseInt(amount.toString()),
-				name: `${name}`,
-				description: `${description}`,
-				date: actualDate,
-				userId
+		const user = await prisma.user.findUnique({
+			where: {
+				username
 			}
 		});
+
+		if (user) {
+			cookies.set('userId', user.id);
+			throw redirect(302, '/dashboard');
+		} else {
+			throw new Error('user does not exist!');
+		}
 	}
 } satisfies Actions;

@@ -1,33 +1,19 @@
 <script>
-	import '@fontsource/iosevka-etoile/100.css';
-	import '@fontsource/iosevka-etoile/100-italic.css';
-	import '@fontsource/iosevka-etoile/200.css';
-	import '@fontsource/iosevka-etoile/200-italic.css';
-	import '@fontsource/iosevka-etoile/300.css';
-	import '@fontsource/iosevka-etoile/300-italic.css';
 	import '@fontsource/iosevka-etoile/400.css';
 	import '@fontsource/iosevka-etoile/400-italic.css';
-	import '@fontsource/iosevka-etoile/500.css';
-	import '@fontsource/iosevka-etoile/500-italic.css';
-	import '@fontsource/iosevka-etoile/600.css';
-	import '@fontsource/iosevka-etoile/600-italic.css';
 	import '@fontsource/iosevka-etoile/700.css';
 	import '@fontsource/iosevka-etoile/700-italic.css';
-	import '@fontsource/iosevka-etoile/800.css';
-	import '@fontsource/iosevka-etoile/800-italic.css';
-	import '@fontsource/iosevka-etoile/900.css';
-	import '@fontsource/iosevka-etoile/900-italic.css';
 
 	import '../app.css';
 </script>
 
-<slot />
+<div class="grid min-h-screen w-screen gap-6 justify-items-center content-center pt-10 px-6">
+	<slot />
+</div>
 
 <style lang="postcss">
 	:global(html) {
 		@apply font-serif;
-		/* background: linear-gradient(theme(colors.white), theme(colors.teal.50)); */
-		/* background-color: theme(colors.teal.50); */
 		background-color: #e8e1d4;
 	}
 </style>

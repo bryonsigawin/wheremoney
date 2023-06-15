@@ -1,16 +1,22 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-
-	import AddTransaction from '$lib/components/add-transaction.svelte';
-	import Transactions from '$lib/components/transactions.svelte';
-
-	export let data: PageData;
-	console.log(data);
+	import Button from '$lib/components/button.svelte';
+	import Window from '$lib/components/window.svelte';
 </script>
 
-<div class="grid min-h-screen w-screen place-content-center gap-6 pt-10">
-	<form method="POST" action="?/add">
-		<AddTransaction />
+<Window>
+	<form method="POST">
+		<div class="flex gap-2 items-center">
+			<div>Hewwo</div>
+			<input
+				type="text"
+				id="username"
+				name="username"
+				class="border-2 border-solid border-black px-4 py-2 w-full font-bold outline-none bg-transparent"
+				required
+			/>
+		</div>
+		<div class="mt-5">
+			<Button>Submit</Button>
+		</div>
 	</form>
-	<Transactions transactions={data.user?.transactions} />
-</div>
+</Window>
