@@ -9,7 +9,7 @@
 </script>
 
 <Window>
-	<form method="POST" class="w-full">
+	<form method="POST" action="?/add" class="w-full">
 		<h1 class="text-3xl font-bold mb-2">Add money</h1>
 
 		<div class="grid gap-2 md:grid-cols-3 mb-2">
@@ -117,6 +117,7 @@
 				<th class="px-2 pb-2">how</th>
 				<th class="px-2 pb-2">what</th>
 				<th class="px-2 pb-2">how much</th>
+				<th class="px-2 pb-2" />
 			</tr>
 		</thead>
 		<tbody>
@@ -124,7 +125,7 @@
 				<tr class="border-b border-black">
 					<td class="px-2 py-4 w-0">
 						<div>{dayjs(transaction.date).format('YYYY-MM-DD')}</div>
-						<div class="text-xs opacity-75">{dayjs(transaction.date).format('HH:mm:ssA')}</div>
+						<div class="text-xs opacity-75">{dayjs(transaction.date).format('hh:mm:ssA')}</div>
 					</td>
 					<td class="px-2 py-4 w-0">
 						<div>{transaction.paymentMethod?.name}</div>
@@ -147,11 +148,19 @@
 							</div>
 						{/if}
 					</td>
+
 					<td class="w-0 p-2">
 						<div class="flex justify-between items-center gap-3">
 							<div>RM</div>
 							<div>{transaction.amount.toFixed(2)}</div>
 						</div>
+					</td>
+
+					<td class="w-0 p-2 text-xs">
+						<form method="POST" action="?/delete">
+							<input type="hidden" name="transactionId" value={transaction.id} class="hidden" />
+							<button>Delete</button>
+						</form>
 					</td>
 				</tr>
 			{/each}

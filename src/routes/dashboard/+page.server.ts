@@ -36,7 +36,7 @@ export const load = (async ({ cookies }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({ request, cookies }) => {
+	add: async ({ request, cookies }) => {
 		const userId = cookies.get('userId');
 		const data = await request.formData();
 
@@ -63,6 +63,17 @@ export const actions = {
 				date: new Date(date.toString()),
 				isShared: JSON.parse(`${isShared}`)
 			}
+		});
+	},
+	delete: async ({ request }) => {
+		const data = await request.formData();
+
+		const id = data.get('transactionId');
+
+		if (!id) throw error(400, 'missing id!');
+
+		await prisma.transaction.delete({
+			where: { id: parseInt(`${id}`, 10) }
 		});
 	}
 } satisfies Actions;
