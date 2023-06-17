@@ -19,7 +19,7 @@ export const load = (async ({ cookies }) => {
 	const transactions = await prisma.transaction.findMany({
 		where: { userId },
 		include: {
-			categories: true,
+			category: true,
 			paymentMethod: true
 		}
 	});
@@ -28,7 +28,11 @@ export const load = (async ({ cookies }) => {
 		select: { name: true, id: true }
 	});
 
-	return { paymentMethods, transactions };
+	const categories = await prisma.category.findMany({
+		select: { name: true, id: true }
+	});
+
+	return { paymentMethods, transactions, categories };
 }) satisfies PageServerLoad;
 
 export const actions = {
@@ -37,12 +41,14 @@ export const actions = {
 		const data = await request.formData();
 
 		const name = data.get('name');
+		const description = data.get('description');
 		const amount = data.get('amount');
-		const paymentMethodId = data.get('paymentMethod');
 		const date = data.get('date');
-		const category = data.get('category');
+		const categoryId = data.get('category');
+		const paymentMethodId = data.get('paymentMethod');
+		const isShared = data.get('isShared');
 
-		if (!userId || !name || !amount || !paymentMethodId || !date || !category) {
+		if (!userId || !name || !amount || !paymentMethodId || !date || !categoryId || !isShared) {
 			throw error(404, 'Fields are missing!');
 		}
 
@@ -50,9 +56,12 @@ export const actions = {
 			data: {
 				userId,
 				name: name.toString(),
+				...(description ? { description: description.toString() } : {}),
 				amount: parseInt(amount.toString()),
 				paymentMethodId: parseInt(paymentMethodId.toString()),
-				date: new Date(date.toString())
+				categoryId: categoryId.toString(),
+				date: new Date(date.toString()),
+				isShared: JSON.parse(`${isShared}`)
 			}
 		});
 	}

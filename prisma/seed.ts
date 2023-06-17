@@ -22,11 +22,54 @@ async function main() {
 			{
 				name: 'Maybank Debit',
 				value: 'debit_maybank_mastercard'
+			},
+			{
+				name: 'Cash',
+				value: 'cash'
 			}
 		]
 	});
 
 	console.log('Created payment methods...');
+
+	await prisma.category.createMany({
+		data: [
+			{
+				name: 'Eating Out',
+				description: ''
+			},
+			{
+				name: 'Groceries',
+				description: ''
+			},
+			{
+				name: 'Transportation',
+				description: ''
+			},
+			{
+				name: 'Entertainment',
+				description: ''
+			},
+			{
+				name: 'Family & Friends',
+				description: ''
+			},
+			{
+				name: 'Partner',
+				description: ''
+			},
+			{
+				name: 'Fixed Payments',
+				description: ''
+			},
+			{
+				name: 'Others',
+				description: ''
+			}
+		]
+	});
+
+	console.log('Created categories...');
 
 	await prisma.user.create({
 		data: {
@@ -46,7 +89,8 @@ async function main() {
 			amount: 20,
 			date: new Date(),
 			paymentMethodId: 1,
-			userId: 'clix00e3l0000uwe015urpnp1'
+			userId: 'clix00e3l0000uwe015urpnp1',
+			isShared: false
 		}
 	});
 
