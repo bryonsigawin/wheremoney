@@ -1,9 +1,14 @@
 <script lang="ts">
 	import Button from '$lib/components/button.svelte';
 	import Window from '$lib/components/window.svelte';
+	import where from '$lib/images/where.jpg';
 </script>
 
 <Window>
+	<div class="mb-8 max-w-1xl mx-auto">
+		<img class="object-contain" src={where} alt="where monkey" />
+	</div>
+
 	<form method="POST">
 		<div class="flex gap-2 items-center">
 			<div>Hewwo</div>
