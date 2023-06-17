@@ -14,7 +14,7 @@
 
 		<div class="grid gap-2 md:grid-cols-3 mb-2">
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
-				<label class="mb-1 block text-xs font-semibold" for="amount">what</label>
+				<label class="mb-1 block text-xs font-semibold" for="name">what</label>
 				<input
 					type="text"
 					id="name"
@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
-				<label class="mb-1 block text-xs font-semibold" for="amount">how</label>
+				<label class="mb-1 block text-xs font-semibold" for="paymentMethod">how</label>
 				<select
 					id="paymentMethod"
 					name="paymentMethod"
@@ -54,7 +54,7 @@
 		</div>
 
 		<div class="overflow-hidden border-2 border-solid border-black px-4 py-2 mb-2">
-			<label class="mb-1 block text-xs font-semibold" for="amount">so what is it</label>
+			<label class="mb-1 block text-xs font-semibold" for="description">so what is it</label>
 			<textarea
 				id="description"
 				name="description"
@@ -65,7 +65,7 @@
 
 		<div class="grid gap-2 md:grid-cols-2 mb-2">
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
-				<label class="mb-1 block text-xs font-semibold" for="amount">when</label>
+				<label class="mb-1 block text-xs font-semibold" for="date">when</label>
 				<input
 					type="datetime-local"
 					id="date"
@@ -76,7 +76,7 @@
 			</div>
 
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
-				<label class="mb-1 block text-xs font-semibold" for="amount">category</label>
+				<label class="mb-1 block text-xs font-semibold" for="category">category</label>
 				<select
 					id="category"
 					name="category"
@@ -90,7 +90,7 @@
 			</div>
 
 			<div class="overflow-hidden border-2 border-solid border-black px-4 py-2">
-				<label class="mb-1 block text-xs font-semibold" for="amount">shared?</label>
+				<label class="mb-1 block text-xs font-semibold" for="isShared">shared?</label>
 				<select
 					id="isShared"
 					name="isShared"
