@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ cookies }) => {
@@ -7,40 +7,52 @@ export const load = (async ({ cookies }) => {
 
 	if (!userId) throw redirect(301, '/');
 
-	const transactions = await prisma.transaction.findMany({
-		where: { userId }
+	const user = await prisma.user.findUnique({
+		where: { id: userId }
 	});
 
-	return { transactions };
+	if (!user) {
+		cookies.delete('userId');
+		throw redirect(301, '/');
+	}
+
+	const transactions = await prisma.transaction.findMany({
+		where: { userId },
+		include: {
+			categories: true,
+			paymentMethod: true
+		}
+	});
+
+	const paymentMethods = await prisma.paymentMethod.findMany({
+		select: { name: true, id: true }
+	});
+
+	return { paymentMethods, transactions };
 }) satisfies PageServerLoad;
 
 export const actions = {
 	default: async ({ request, cookies }) => {
+		const userId = cookies.get('userId');
 		const data = await request.formData();
 
-		const amount = data.get('amount');
 		const name = data.get('name');
-		const description = data.get('description');
+		const amount = data.get('amount');
+		const paymentMethodId = data.get('paymentMethod');
 		const date = data.get('date');
-		const userId = cookies.get('userId');
+		const category = data.get('category');
 
-		if (!amount || !name || !description || !userId || !date) {
-			throw new Error('Fields are missing!');
+		if (!userId || !name || !amount || !paymentMethodId || !date || !category) {
+			throw error(404, 'Fields are missing!');
 		}
-
-		const inputDate = new Date(`${date}`);
-
-		const actualDate = new Date();
-		actualDate.setDate(inputDate.getDate());
-		actualDate.setMonth(inputDate.getMonth());
 
 		await prisma.transaction.create({
 			data: {
+				userId,
+				name: name.toString(),
 				amount: parseInt(amount.toString()),
-				name: `${name}`,
-				description: `${description}`,
-				date: actualDate,
-				userId
+				paymentMethodId: parseInt(paymentMethodId.toString()),
+				date: new Date(date.toString())
 			}
 		});
 	}
