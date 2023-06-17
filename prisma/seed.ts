@@ -12,16 +12,20 @@ async function main() {
 				value: 'ewallet_grabpay'
 			},
 			{
-				name: 'Maybank Credit (AMEX)',
+				name: 'MB Credit (AMEX)',
 				value: 'credit_maybank_amex'
 			},
 			{
-				name: 'Maybank Credit (MasterCard)',
+				name: 'MB Credit (MC)',
 				value: 'credit_maybank_mastercard'
 			},
 			{
-				name: 'Maybank Debit',
-				value: 'debit_maybank_mastercard'
+				name: 'MB Debit',
+				value: 'debit_maybank'
+			},
+			{
+				name: 'CIMB Debit',
+				value: 'debit_cimb'
 			},
 			{
 				name: 'Cash',
