@@ -7,9 +7,7 @@
 	import '../app.css';
 </script>
 
-<div
-	class="grid min-h-screen gap-4 md:justify-items-center md:content-center py-14 md:px-6 pl-2 pr-6"
->
+<div class="grid min-h-screen gap-4 justify-items-center content-center py-14 md:px-6 pl-2 pr-6">
 	<slot />
 </div>
 
