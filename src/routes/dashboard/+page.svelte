@@ -34,6 +34,7 @@
 						id="amount"
 						name="amount"
 						class="w-full font-bold outline-none bg-transparent"
+						step="0.01"
 						required
 					/>
 				</div>

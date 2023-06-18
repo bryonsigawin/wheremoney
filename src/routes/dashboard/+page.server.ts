@@ -57,7 +57,7 @@ export const actions = {
 				userId,
 				name: name.toString(),
 				...(description ? { description: description.toString() } : {}),
-				amount: parseInt(amount.toString()),
+				amount: parseFloat(amount.toString()),
 				paymentMethodId: parseInt(paymentMethodId.toString()),
 				categoryId: categoryId.toString(),
 				date: new Date(date.toString()),
